@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import axios from 'axios';
+import { apiUrl } from '../apiBase.js';
 
 const INITIAL_MESSAGE = {
   role: 'assistant',
@@ -36,7 +37,7 @@ export default function ChatbotWidget() {
     setLoading(true);
 
     try {
-      const res = await axios.post('/api/chat', {
+      const res = await axios.post(apiUrl('/api/chat'), {
         messages: newMessages.map((m) => ({ role: m.role, content: m.content })),
       });
       setMessages((prev) => [...prev, { role: 'assistant', content: res.data.reply }]);

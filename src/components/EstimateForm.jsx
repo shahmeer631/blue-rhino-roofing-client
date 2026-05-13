@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import axios from 'axios';
+import { apiUrl } from '../apiBase.js';
 
 const roofTypes = ['Asphalt Shingles', 'Metal', 'Tile', 'Flat/TPO', 'Slate', 'Wood Shake', 'Other'];
 const damageTypes = ['Storm Damage', 'Hail Damage', 'Wind Damage', 'Leak/Water Damage', 'Missing Shingles', 'Complete Replacement', 'New Installation', 'Other'];
@@ -60,7 +61,7 @@ export default function EstimateForm({ compact = false, variant = 'estimate' }) 
             notes: form.notes,
             source: 'estimate-form',
           };
-      const res = await axios.post('/api/leads', payload);
+      const res = await axios.post(apiUrl('/api/leads'), payload);
       setStatus('success');
       setMessage(res.data.message);
       setForm({ name: '', phone: '', email: '', address: '', roofType: '', damageType: '', notes: '', message: '' });

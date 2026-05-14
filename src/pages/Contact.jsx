@@ -7,7 +7,7 @@ const faqs = [
   { q: 'How much does a new roof cost in Houston?', a: 'Every roof is different — cost depends on size, materials, and complexity. We offer free estimates and financing through Express Financial so you know exactly what to expect before any work begins.' },
   { q: 'Do you handle the insurance claim process?', a: 'Yes. We handle everything from initial documentation to filing, supplement requests, adjuster meetings, and even appraisal demands if your claim is underpaid or denied.' },
   { q: 'What warranty do you offer?', a: '5-year workmanship warranty plus 30-year manufacturer warranty on materials from brands like IKO, TAMKO, Owens Corning, and GAF.' },
-  { q: 'How long does a roof replacement take?', a: 'Most residential roof replacements are completed in 1 day. Insurance claim projects typically take 30–90 days from approval to completion.' },
+  { q: 'How long does a roof replacement take?', a: 'Most residential roof replacements are completed in 1 day. Commercial roofs usually take a couple of days up to about 30 days, depending on the size and scope of work. Insurance claim projects often take 30–90 days from approval to completion.' },
   { q: 'What areas do you serve?', a: 'Houston, Katy, Sugar Land, Cypress, The Woodlands, Spring, Humble, Pearland, and all surrounding Greater Houston Area communities.' },
   { q: "What if my insurance company's offer seems too low?", a: "You have the legal right to request an appraisal — it's often the best way to get a fair settlement without hiring an attorney. The process typically costs $1,000–$2,000, and if we believe we can win, we may cover the appraisal cost for you. You will still need to pay your deductible. We'll walk you through every step." },
   { q: 'Will Blue Rhino Roofing waive my deductible?', a: 'No — and you should be cautious of any contractor who offers to. Under Texas law, it\'s illegal for a contractor to waive your deductible. We operate with full transparency and compliance. You can verify this at https://www.tdi.texas.gov/tips/can-a-contractor-waive-my-deductible.html' },
@@ -44,7 +44,7 @@ export default function Contact() {
         <div className="max-w-5xl mx-auto px-4 sm:px-6">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {contactInfo.map(({ icon, label, value, href, emailCard }) => (
-              <div key={label} className="card text-center">
+              <div key={label} className="card text-center min-w-0">
                 <div className="text-3xl mb-3">{icon}</div>
                 <div className="font-heading font-bold text-rhino-blue text-xs uppercase tracking-widest mb-1">{label}</div>
                 {emailCard ? (

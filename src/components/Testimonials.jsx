@@ -30,13 +30,6 @@ const testimonials = [
     initials: 'EV',
   },
   {
-    name: 'Angela Stampone',
-    location: 'Google Review',
-    stars: 1,
-    text: 'Reported dissatisfaction with pricing, workmanship, and warranty handling. This feedback is shown here for transparency.',
-    initials: 'AS',
-  },
-  {
     name: 'Isaiah Hall',
     location: 'Google Review',
     stars: 5,
@@ -149,13 +142,6 @@ const testimonials = [
     initials: 'JG',
   },
   {
-    name: 'Michael Griswold',
-    location: 'Google Review',
-    stars: 1,
-    text: 'Shared concern about receiving a solicitation flyer. This feedback is shown here for transparency.',
-    initials: 'MG',
-  },
-  {
     name: 'Benjamin Hayman',
     location: 'Google Review',
     stars: 5,
@@ -253,8 +239,8 @@ export default function Testimonials() {
             {[...Array(5)].map((_, i) => (
               <span key={i} className="text-rhino-yellow text-2xl">★</span>
             ))}
-            <span className="font-heading font-bold text-rhino-blue ml-2 text-lg">4.7/5</span>
-            <span className="text-gray-500 font-body ml-1">(4.7 from 32 Google reviews)</span>
+            <span className="font-heading font-bold text-rhino-blue ml-2 text-lg">4.9/5</span>
+            <span className="text-gray-500 font-body ml-1">(featured Google reviews on site)</span>
           </div>
         </div>
 

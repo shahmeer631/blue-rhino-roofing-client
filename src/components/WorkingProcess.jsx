@@ -1,7 +1,7 @@
 const steps = [
   { num: '1', icon: '🔍', title: 'Free Storm Inspection', desc: 'Thorough certified roof inspection, detailed estimate, no pressure.' },
   { num: '2', icon: '📋', title: 'Insurance Claim Support', desc: 'We help file your claim, prepare documentation, handle all paperwork.' },
-  { num: '3', icon: '🔨', title: 'Expert Installation', desc: 'Certified crew, premium materials. Most projects completed in 1 day.' },
+  { num: '3', icon: '🔨', title: 'Expert Installation', desc: 'Certified crew, premium materials. Residential often 1 day; commercial varies by scope (a few days up to about 30).' },
   { num: '4', icon: '✅', title: 'Final Inspection & Warranty', desc: 'Quality check, 5-year workmanship warranty, 30-year manufacturer warranty, 100% satisfaction.' },
 ];
 

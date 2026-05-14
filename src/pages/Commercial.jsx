@@ -47,7 +47,7 @@ export default function Commercial() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
             {[
               { num: 'Greater Houston', label: 'Service Area' },
-              { num: '1-Day', label: 'Most Jobs Completed' },
+              { num: 'Varies', label: 'Commercial: a couple of days to about 30 by scope' },
               { num: 'HAAG', label: 'Engineering Certified' },
               { num: '100%', label: 'Projects On Time & Budget' },
             ].map(({ num, label }) => (

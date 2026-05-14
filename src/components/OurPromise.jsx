@@ -25,7 +25,7 @@ const integrity = [
   {
     icon: '⚡',
     title: 'Speed with Precision',
-    desc: 'Most projects completed in 1 day.',
+    desc: 'Residential replacements often in 1 day; commercial timelines depend on size (a few days up to ~30).',
   },
   {
     icon: '📢',

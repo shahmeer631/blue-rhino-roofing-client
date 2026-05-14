@@ -22,7 +22,7 @@ export default function EmailReachOut({ variant = 'card' }) {
       href={GMAIL_COMPOSE_URL}
       target="_blank"
       rel="noopener noreferrer"
-      className="font-body text-gray-700 text-sm hover:text-rhino-blue-mid transition-colors break-all text-center inline-block"
+      className="font-body text-gray-700 text-xs tracking-tight hover:text-rhino-blue-mid transition-colors text-center block w-full whitespace-nowrap"
       aria-label={`Email ${COMPANY_EMAIL} (opens Gmail)`}
     >
       {COMPANY_EMAIL}

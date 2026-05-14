@@ -1,5 +1,6 @@
 import { Helmet } from 'react-helmet-async';
 import HeroSection from '../components/HeroSection';
+import HomeTrustSection from '../components/HomeTrustSection';
 import ServicesSection from '../components/ServicesSection';
 import InsuranceProcess from '../components/InsuranceProcess';
 import WhyUs from '../components/WhyUs';
@@ -27,7 +28,7 @@ export default function Home() {
           "name": "Blue Rhino Roofing",
           "url": "https://www.bluerhinoroofing.net",
           "telephone": "+13467338558",
-          "email": "shawn@bluerhinoroofing.net",
+          "email": "help@BlueRhinoRoofing.net",
           "address": {
             "@type": "PostalAddress",
             "streetAddress": "2717 Commercial Center Blvd Suite E200",
@@ -38,11 +39,13 @@ export default function Home() {
           },
           "areaServed": ["Houston", "Katy", "Sugar Land", "Cypress", "The Woodlands", "Spring", "Humble", "Pearland", "Friendswood", "Missouri City", "Richmond", "Memorial", "River Oaks", "Heights", "Montrose"],
           "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.8", "reviewCount": "200" },
+          "sameAs": ["https://www.bbb.org/us/tx/katy/profile/roofing-contractors/blue-rhino-roofing-0915-90075546"],
           "priceRange": "$$"
         })}</script>
       </Helmet>
 
       <HeroSection />
+      <HomeTrustSection />
       <MeetTheTeam />
       <OurPromise />
       <ServicesSection />

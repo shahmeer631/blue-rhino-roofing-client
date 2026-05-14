@@ -30,7 +30,7 @@ export default function MeetTheTeam() {
               { num: '4+', label: 'Years Storm Inspection Experience', icon: '📋', color: 'bg-rhino-blue text-white' },
               { num: 'TX', label: 'Licensed Insurance Adjusters on Staff', icon: '⚖️', color: 'bg-rhino-yellow text-rhino-blue' },
               { num: 'HAAG', label: 'Engineering Certified Inspectors', icon: '🏆', color: 'bg-rhino-yellow text-rhino-blue' },
-              { num: '1-Day', label: 'Most Projects Completed', icon: '⚡', color: 'bg-rhino-blue text-white' },
+              { num: 'By scope', label: 'Residential often 1 day · Commercial a few days–30', icon: '⚡', color: 'bg-rhino-blue text-white' },
             ].map(({ num, label, icon, color }) => (
               <div key={label} className={`${color} rounded-2xl p-6 shadow-lg`}>
                 <div className="text-3xl mb-2">{icon}</div>

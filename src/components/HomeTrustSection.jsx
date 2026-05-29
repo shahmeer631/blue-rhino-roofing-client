@@ -1,6 +1,9 @@
-/** BBB profile + before/after imagery (served from /public/images — copied to dist on build). */
-const ROOF_BEFORE = '/images/roof-before.svg';
-const ROOF_AFTER = '/images/roof-after.svg';
+/**
+ * Before/after photos imported with ?url so Vite copies them to /assets/
+ * on every build (reliable on Vercel — does not depend on /public/images).
+ */
+import roofBeforeUrl from '../assets/images/roof-before.jpg?url';
+import roofAfterUrl from '../assets/images/roof-after.jpg?url';
 
 const BBB_PROFILE_URL =
   'https://www.bbb.org/us/tx/katy/profile/roofing-contractors/blue-rhino-roofing-0915-90075546';
@@ -44,10 +47,10 @@ export default function HomeTrustSection() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <figure className="rounded-2xl overflow-hidden shadow-xl border border-gray-100 bg-rhino-gray">
                 <img
-                  src={ROOF_BEFORE}
+                  src={roofBeforeUrl}
                   alt="Storm-damaged residential roof before replacement in Houston Texas"
                   title="Roof before storm damage repair"
-                  className="w-full h-56 sm:h-64 object-contain bg-slate-200"
+                  className="w-full h-56 sm:h-64 object-cover"
                   loading="eager"
                   decoding="async"
                   width={900}
@@ -59,10 +62,10 @@ export default function HomeTrustSection() {
               </figure>
               <figure className="rounded-2xl overflow-hidden shadow-xl border border-gray-100 bg-rhino-gray">
                 <img
-                  src={ROOF_AFTER}
+                  src={roofAfterUrl}
                   alt="New residential roof after professional replacement in Katy Texas"
                   title="Roof after professional installation"
-                  className="w-full h-56 sm:h-64 object-contain bg-sky-100"
+                  className="w-full h-56 sm:h-64 object-cover"
                   loading="eager"
                   decoding="async"
                   width={900}

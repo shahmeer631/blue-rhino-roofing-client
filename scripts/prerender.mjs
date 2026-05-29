@@ -6,7 +6,8 @@ import http from 'node:http';
 import { existsSync, mkdirSync, readFileSync, statSync, writeFileSync } from 'node:fs';
 import { dirname, extname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import puppeteer from 'puppeteer';
+import puppeteer from 'puppeteer-core';
+import chromium from '@sparticuz/chromium';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const dist = join(__dirname, '..', 'dist');
@@ -26,6 +27,8 @@ const MIME = {
   '.xml': 'application/xml; charset=utf-8',
   '.ico': 'image/x-icon',
 };
+
+const LAUNCH_ARGS = ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage'];
 
 function resolveFile(urlPath) {
   const safePath = decodeURIComponent(urlPath.split('?')[0]);
@@ -66,15 +69,59 @@ function outFileForRoute(route) {
   return join(dist, route.slice(1), 'index.html');
 }
 
+function localChromePath() {
+  const candidates = [
+    process.env.CHROME_PATH,
+    process.env.PUPPETEER_EXECUTABLE_PATH,
+    'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe',
+    'C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe',
+    process.env.LOCALAPPDATA && join(process.env.LOCALAPPDATA, 'Google', 'Chrome', 'Application', 'chrome.exe'),
+    '/usr/bin/google-chrome',
+    '/usr/bin/chromium-browser',
+    '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
+  ].filter(Boolean);
+
+  return candidates.find((p) => existsSync(p)) ?? null;
+}
+
+async function launchBrowser() {
+  // Vercel / Linux CI: bundled Chromium (no system libnspr4 dependency)
+  if (process.env.VERCEL === '1' || process.env.CI === 'true') {
+    chromium.setGraphicsMode = false;
+    return puppeteer.launch({
+      args: [...chromium.args, ...LAUNCH_ARGS],
+      defaultViewport: chromium.defaultViewport,
+      executablePath: await chromium.executablePath(),
+      headless: chromium.headless,
+    });
+  }
+
+  // Local dev: use installed Chrome / Chromium
+  const executablePath = localChromePath();
+  if (!executablePath) {
+    throw new Error(
+      'Chrome not found for prerender. Install Google Chrome or set CHROME_PATH to your browser executable.',
+    );
+  }
+
+  return puppeteer.launch({
+    executablePath,
+    headless: true,
+    args: LAUNCH_ARGS,
+  });
+}
+
 async function prerender() {
+  if (process.env.SKIP_PRERENDER === '1') {
+    console.log('SKIP_PRERENDER=1 — skipping prerender step');
+    return;
+  }
+
   const server = await serveDist();
   const { port } = server.address();
   const base = `http://127.0.0.1:${port}`;
 
-  const browser = await puppeteer.launch({
-    headless: true,
-    args: ['--no-sandbox', '--disable-setuid-sandbox'],
-  });
+  const browser = await launchBrowser();
 
   try {
     const page = await browser.newPage();

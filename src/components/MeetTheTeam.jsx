@@ -1,4 +1,4 @@
-import teamTruck from '../assets/images/team-truck.svg';
+const TEAM_TRUCK = '/images/team-truck.svg';
 
 export default function MeetTheTeam() {
   return (
@@ -30,7 +30,7 @@ export default function MeetTheTeam() {
           <div className="flex flex-col gap-4">
             <figure className="rounded-2xl overflow-hidden shadow-xl border border-gray-100">
               <img
-                src={teamTruck}
+                src={TEAM_TRUCK}
                 alt="Blue Rhino Roofing service team and truck serving Houston and Katy Texas"
                 title="Blue Rhino Roofing crew"
                 className="w-full h-48 sm:h-56 object-cover"

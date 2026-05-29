@@ -1,20 +1,16 @@
-import credentialLicensed from '../assets/images/credential-licensed.svg';
-import credentialHaag from '../assets/images/credential-haag.svg';
-import credentialAdjuster from '../assets/images/credential-adjuster.svg';
-
 const credentials = [
   {
-    src: credentialLicensed,
+    src: '/images/credential-licensed.svg',
     alt: 'Texas licensed and insured roofing contractor badge',
     title: 'Licensed, bonded & insured',
   },
   {
-    src: credentialHaag,
+    src: '/images/credential-haag.svg',
     alt: 'HAAG Engineering certified storm damage roof inspector badge',
     title: 'HAAG Engineering certified',
   },
   {
-    src: credentialAdjuster,
+    src: '/images/credential-adjuster.svg',
     alt: 'Licensed Texas insurance adjuster on staff for homeowner claims',
     title: 'Licensed insurance adjusters',
   },
@@ -34,6 +30,7 @@ export default function CredentialsGallery() {
                 title={title}
                 className="w-full h-32 object-contain mx-auto"
                 loading="lazy"
+                decoding="async"
                 width={280}
                 height={128}
               />

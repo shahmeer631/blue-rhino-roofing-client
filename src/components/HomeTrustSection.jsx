@@ -1,6 +1,6 @@
-/** BBB profile + before/after imagery (bundled via Vite so deploys always include files). */
-import roofBefore from '../assets/images/roof-before.svg';
-import roofAfter from '../assets/images/roof-after.svg';
+/** BBB profile + before/after imagery (served from /public/images — copied to dist on build). */
+const ROOF_BEFORE = '/images/roof-before.svg';
+const ROOF_AFTER = '/images/roof-after.svg';
 
 const BBB_PROFILE_URL =
   'https://www.bbb.org/us/tx/katy/profile/roofing-contractors/blue-rhino-roofing-0915-90075546';
@@ -44,11 +44,12 @@ export default function HomeTrustSection() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <figure className="rounded-2xl overflow-hidden shadow-xl border border-gray-100 bg-rhino-gray">
                 <img
-                  src={roofBefore}
+                  src={ROOF_BEFORE}
                   alt="Storm-damaged residential roof before replacement in Houston Texas"
                   title="Roof before storm damage repair"
-                  className="w-full h-56 sm:h-64 object-cover"
-                  loading="lazy"
+                  className="w-full h-56 sm:h-64 object-contain bg-slate-200"
+                  loading="eager"
+                  decoding="async"
                   width={900}
                   height={600}
                 />
@@ -58,11 +59,12 @@ export default function HomeTrustSection() {
               </figure>
               <figure className="rounded-2xl overflow-hidden shadow-xl border border-gray-100 bg-rhino-gray">
                 <img
-                  src={roofAfter}
+                  src={ROOF_AFTER}
                   alt="New residential roof after professional replacement in Katy Texas"
                   title="Roof after professional installation"
-                  className="w-full h-56 sm:h-64 object-cover"
-                  loading="lazy"
+                  className="w-full h-56 sm:h-64 object-contain bg-sky-100"
+                  loading="eager"
+                  decoding="async"
                   width={900}
                   height={600}
                 />

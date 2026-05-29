@@ -1,3 +1,5 @@
+import teamTruck from '../assets/images/team-truck.svg';
+
 export default function MeetTheTeam() {
   return (
     <section className="py-20 bg-white" id="team">
@@ -25,7 +27,20 @@ export default function MeetTheTeam() {
             </div>
           </div>
 
-          <div className="grid grid-cols-2 gap-4">
+          <div className="flex flex-col gap-4">
+            <figure className="rounded-2xl overflow-hidden shadow-xl border border-gray-100">
+              <img
+                src={teamTruck}
+                alt="Blue Rhino Roofing service team and truck serving Houston and Katy Texas"
+                title="Blue Rhino Roofing crew"
+                className="w-full h-48 sm:h-56 object-cover"
+                loading="lazy"
+                width={800}
+                height={500}
+              />
+            </figure>
+
+            <div className="grid grid-cols-2 gap-4">
             {[
               { num: '4+', label: 'Years Storm Inspection Experience', icon: '📋', color: 'bg-rhino-blue text-white' },
               { num: 'TX', label: 'Licensed Insurance Adjusters on Staff', icon: '⚖️', color: 'bg-rhino-yellow text-rhino-blue' },
@@ -38,6 +53,7 @@ export default function MeetTheTeam() {
                 <div className="font-body text-sm opacity-80">{label}</div>
               </div>
             ))}
+            </div>
           </div>
         </div>
       </div>

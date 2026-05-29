@@ -1,4 +1,7 @@
-/** BBB profile + before/after imagery for homepage authority (replace images with your project photos when ready). */
+/** BBB profile + before/after imagery (bundled via Vite so deploys always include files). */
+import roofBefore from '../assets/images/roof-before.svg';
+import roofAfter from '../assets/images/roof-after.svg';
+
 const BBB_PROFILE_URL =
   'https://www.bbb.org/us/tx/katy/profile/roofing-contractors/blue-rhino-roofing-0915-90075546';
 
@@ -41,8 +44,9 @@ export default function HomeTrustSection() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <figure className="rounded-2xl overflow-hidden shadow-xl border border-gray-100 bg-rhino-gray">
                 <img
-                  src="/images/roof-before.jpg"
-                  alt="Residential roof before replacement"
+                  src={roofBefore}
+                  alt="Storm-damaged residential roof before replacement in Houston Texas"
+                  title="Roof before storm damage repair"
                   className="w-full h-56 sm:h-64 object-cover"
                   loading="lazy"
                   width={900}
@@ -54,8 +58,9 @@ export default function HomeTrustSection() {
               </figure>
               <figure className="rounded-2xl overflow-hidden shadow-xl border border-gray-100 bg-rhino-gray">
                 <img
-                  src="/images/roof-after.jpg"
-                  alt="Residential roof after professional replacement"
+                  src={roofAfter}
+                  alt="New residential roof after professional replacement in Katy Texas"
+                  title="Roof after professional installation"
                   className="w-full h-56 sm:h-64 object-cover"
                   loading="lazy"
                   width={900}

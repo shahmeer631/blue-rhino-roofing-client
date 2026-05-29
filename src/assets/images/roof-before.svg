@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="600" viewBox="0 0 900 600" role="img" aria-label="Storm-damaged residential roof before replacement in Houston">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#5b6f8a"/>
+      <stop offset="100%" stop-color="#8fa3b8"/>
+    </linearGradient>
+  </defs>
+  <rect width="900" height="600" fill="url(#sky)"/>
+  <rect y="380" width="900" height="220" fill="#4a5568"/>
+  <polygon points="120,380 450,180 780,380" fill="#374151"/>
+  <polygon points="200,380 450,240 700,380" fill="#4b5563"/>
+  <ellipse cx="320" cy="310" rx="45" ry="28" fill="#1f2937" opacity="0.5"/>
+  <ellipse cx="520" cy="290" rx="60" ry="35" fill="#1f2937" opacity="0.45"/>
+  <text x="450" y="520" text-anchor="middle" font-family="Arial,sans-serif" font-size="22" fill="#f3f4f6">Before  storm damage documented</text>
+</svg>

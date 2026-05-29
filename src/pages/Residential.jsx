@@ -1,5 +1,7 @@
-import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
+import SeoHead from '../components/SeoHead';
+import { RESIDENTIAL_META } from '../seo/pageMeta';
+import { breadcrumbSchema, localBusinessSchema, webPageSchema } from '../seo/schema';
 import EstimateForm from '../components/EstimateForm';
 
 const roofTypes = [
@@ -21,11 +23,17 @@ const process = [
 export default function Residential() {
   return (
     <>
-      <Helmet>
-        <title>Residential Roofing Houston & Katy TX | Blue Rhino Roofing</title>
-        <meta name="description" content="Expert residential roofing in Houston and Katy TX. Storm damage repair, full replacement, asphalt shingles, metal, tile. HAAG certified inspectors. Licensed insurance adjusters on staff. Free estimates." />
-        <meta name="keywords" content="residential roofing Houston, roof replacement Katy TX, asphalt shingles Houston, storm damage roofing, HAAG certified inspection, insurance claim roofing Houston" />
-      </Helmet>
+      <SeoHead
+        {...RESIDENTIAL_META}
+        jsonLd={[
+          localBusinessSchema(),
+          webPageSchema({ path: RESIDENTIAL_META.path, name: RESIDENTIAL_META.title, description: RESIDENTIAL_META.description }),
+          breadcrumbSchema([
+            { name: 'Home', url: '/' },
+            { name: 'Residential Roofing', url: '/residential' },
+          ]),
+        ]}
+      />
 
       {/* Hero */}
       <section className="bg-rhino-blue pt-28 pb-16 clip-diagonal">
@@ -99,6 +107,17 @@ export default function Residential() {
               <span key={brand} className="bg-white/10 border border-white/20 text-white font-heading font-bold px-6 py-2.5 rounded-xl text-lg hover:bg-rhino-yellow hover:text-rhino-blue transition-colors">{brand}</span>
             ))}
           </div>
+        </div>
+      </section>
+
+      <section className="py-8 bg-rhino-gray border-t border-gray-100">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 text-center font-body text-sm text-gray-600">
+          Also see our{' '}
+          <Link to="/commercial" className="text-rhino-blue-mid font-semibold hover:underline">commercial roofing</Link>
+          ,{' '}
+          <Link to="/#insurance" className="text-rhino-blue-mid font-semibold hover:underline">insurance claim process</Link>
+          , and{' '}
+          <Link to="/contact" className="text-rhino-blue-mid font-semibold hover:underline">free inspection form</Link>.
         </div>
       </section>
 

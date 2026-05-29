@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 const services = [
   { icon: '🏠', title: 'Residential Roofing', desc: 'Repair, replacement, maintenance. Asphalt, metal, all systems.', link: '/residential', color: 'from-blue-50 to-blue-100' },
   { icon: '🏢', title: 'Commercial Roofing', desc: 'TPO, modified bitumen, flat/low-slope systems.', link: '/commercial', color: 'from-yellow-50 to-yellow-100' },
-  { icon: '⛈️', title: 'Storm Damage & Insurance Claims', desc: 'Licensed adjusters on staff. Full claim support.', link: '/contact', color: 'from-blue-50 to-blue-100' },
+  { icon: '⛈️', title: 'Storm Damage & Insurance Claims', desc: 'Licensed adjusters on staff. Full claim support.', link: '/#insurance', color: 'from-blue-50 to-blue-100' },
   { icon: '🏚️', title: 'Gutters & Siding', desc: 'Installation, repair, storm damage inspection.', link: '/contact', color: 'from-yellow-50 to-yellow-100' },
   { icon: '💧', title: 'Interior Water Damage', desc: 'Ceiling stains, drywall, water damage restoration.', link: '/contact', color: 'from-blue-50 to-blue-100' },
   { icon: '💳', title: 'Financing Available', desc: 'Through Express Financial. Flexible terms.', link: '/contact', color: 'from-yellow-50 to-yellow-100' },

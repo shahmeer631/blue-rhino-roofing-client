@@ -31,8 +31,11 @@ export default function Navbar() {
         <Link to="/" className="flex items-center gap-3 group">
           <img
             src={rhinoLogo}
-            alt="Blue Rhino Roofing logo"
+            alt="Blue Rhino Roofing — Houston and Katy storm damage roofing"
+            title="Blue Rhino Roofing home"
             className="h-12 w-auto md:h-14 object-contain transition-transform duration-200 group-hover:scale-[1.02]"
+            width={180}
+            height={56}
           />
         </Link>
 

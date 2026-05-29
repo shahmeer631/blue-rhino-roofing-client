@@ -1,17 +1,15 @@
-import { Helmet } from 'react-helmet-async';
+import { Link } from 'react-router-dom';
+import SeoHead from '../components/SeoHead';
 import EstimateForm from '../components/EstimateForm';
 import EmailReachOut from '../components/EmailReachOut';
-
-const faqs = [
-  { q: 'What makes Blue Rhino different from other Houston roofers?', a: 'Our team includes licensed Texas insurance adjusters who work only for homeowners. Most roofers just fix roofs — we work with your insurance company to make sure you receive the full amount you deserve.' },
-  { q: 'How much does a new roof cost in Houston?', a: 'Every roof is different — cost depends on size, materials, and complexity. We offer free estimates and financing through Express Financial so you know exactly what to expect before any work begins.' },
-  { q: 'Do you handle the insurance claim process?', a: 'Yes. We handle everything from initial documentation to filing, supplement requests, adjuster meetings, and even appraisal demands if your claim is underpaid or denied.' },
-  { q: 'What warranty do you offer?', a: '5-year workmanship warranty plus 30-year manufacturer warranty on materials from brands like IKO, TAMKO, Owens Corning, and GAF.' },
-  { q: 'How long does a roof replacement take?', a: 'Most residential roof replacements are completed in 1 day. Commercial roofs usually take a couple of days up to about 30 days, depending on the size and scope of work. Insurance claim projects often take 30–90 days from approval to completion.' },
-  { q: 'What areas do you serve?', a: 'Houston, Katy, Sugar Land, Cypress, The Woodlands, Spring, Humble, Pearland, and all surrounding Greater Houston Area communities.' },
-  { q: "What if my insurance company's offer seems too low?", a: "You have the legal right to request an appraisal — it's often the best way to get a fair settlement without hiring an attorney. The process typically costs $1,000–$2,000, and if we believe we can win, we may cover the appraisal cost for you. You will still need to pay your deductible. We'll walk you through every step." },
-  { q: 'Will Blue Rhino Roofing waive my deductible?', a: 'No — and you should be cautious of any contractor who offers to. Under Texas law, it\'s illegal for a contractor to waive your deductible. We operate with full transparency and compliance. You can verify this at https://www.tdi.texas.gov/tips/can-a-contractor-waive-my-deductible.html' },
-];
+import { CONTACT_META } from '../seo/pageMeta';
+import { contactFaqs } from '../seo/faqs';
+import {
+  breadcrumbSchema,
+  faqPageSchema,
+  localBusinessSchema,
+  webPageSchema,
+} from '../seo/schema';
 
 const contactInfo = [
   { icon: '📞', label: 'Phone', value: '(346) 733-8558', href: 'tel:+13467338558' },
@@ -23,13 +21,19 @@ const contactInfo = [
 export default function Contact() {
   return (
     <>
-      <Helmet>
-        <title>Contact Blue Rhino Roofing | Free Storm Damage Inspection | Katy & Houston TX</title>
-        <meta name="description" content="Contact Blue Rhino Roofing for a free storm damage inspection and estimate. Serving Houston, Katy, and the Greater Houston Area. Call (346) 733-8558." />
-        <meta name="keywords" content="contact Blue Rhino Roofing, free roof inspection Houston, Katy roofing estimate, storm damage inspection" />
-      </Helmet>
+      <SeoHead
+        {...CONTACT_META}
+        jsonLd={[
+          localBusinessSchema(),
+          webPageSchema({ path: CONTACT_META.path, name: CONTACT_META.title, description: CONTACT_META.description }),
+          faqPageSchema(contactFaqs),
+          breadcrumbSchema([
+            { name: 'Home', url: '/' },
+            { name: 'Contact', url: '/contact' },
+          ]),
+        ]}
+      />
 
-      {/* Hero */}
       <section className="bg-rhino-blue pt-28 pb-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 text-center">
           <div className="inline-block bg-rhino-yellow/20 border border-rhino-yellow/40 text-rhino-yellow font-heading font-bold px-4 py-1.5 rounded-full text-sm mb-6">GET IN TOUCH</div>
@@ -39,7 +43,6 @@ export default function Contact() {
         </div>
       </section>
 
-      {/* Contact info */}
       <section className="py-10 bg-white">
         <div className="max-w-5xl mx-auto px-4 sm:px-6">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -60,7 +63,6 @@ export default function Contact() {
         </div>
       </section>
 
-      {/* Form + FAQ */}
       <section className="py-16 bg-rhino-gray">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
@@ -77,13 +79,21 @@ export default function Contact() {
                   <div className="font-body text-gray-300 text-xs mt-1">We work only for homeowners — never for insurance carriers. We know both sides of the claim.</div>
                 </div>
               </div>
+              <p className="mt-6 font-body text-sm text-gray-600">
+                Learn about our{' '}
+                <Link to="/residential" className="text-rhino-blue-mid font-semibold hover:underline">residential services</Link>
+                ,{' '}
+                <Link to="/commercial" className="text-rhino-blue-mid font-semibold hover:underline">commercial roofing</Link>
+                , and{' '}
+                <Link to="/about" className="text-rhino-blue-mid font-semibold hover:underline">our story</Link>.
+              </p>
             </div>
 
             <div>
               <h2 className="section-title mb-2">Frequently Asked Questions</h2>
               <p className="font-body text-gray-600 mb-8">Answers to the questions Houston homeowners ask us most.</p>
               <div className="flex flex-col gap-3">
-                {faqs.map(({ q, a }) => (
+                {contactFaqs.map(({ q, a }) => (
                   <details key={q} className="bg-white rounded-2xl shadow-sm border border-gray-100 group">
                     <summary className="px-6 py-4 font-heading font-semibold text-rhino-blue cursor-pointer list-none flex justify-between items-center gap-4 select-none">
                       <span className="text-sm">{q}</span>
@@ -98,7 +108,7 @@ export default function Contact() {
 
               <div className="mt-8 bg-red-600 text-white rounded-2xl p-6">
                 <div className="text-3xl mb-2">🚨</div>
-                <h4 className="font-heading font-bold text-lg mb-1">Emergency Roof Repair?</h4>
+                <h3 className="font-heading font-bold text-lg mb-1">Emergency Roof Repair?</h3>
                 <p className="font-body text-sm text-red-100 mb-4">Active leak or severe storm damage? Call us — we prioritize emergency calls for Houston and Katy homeowners.</p>
                 <a href="tel:+13467338558" className="inline-flex items-center gap-2 bg-white text-red-600 font-heading font-bold px-6 py-3 rounded-xl hover:bg-red-50 transition-colors text-sm">
                   📞 (346) 733-8558 — Emergency Line

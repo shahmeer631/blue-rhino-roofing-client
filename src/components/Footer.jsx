@@ -11,8 +11,11 @@ export default function Footer() {
           <div className="flex items-center gap-3 mb-4">
             <img
               src={rhinoLogo}
-              alt="Blue Rhino Roofing logo"
+              alt="Blue Rhino Roofing — storm damage roofing Houston Katy TX"
+              title="Blue Rhino Roofing"
               className="h-12 w-auto md:h-14 object-contain"
+              width={180}
+              height={56}
             />
           </div>
           <p className="text-gray-300 text-sm leading-relaxed max-w-xs font-body mb-4">

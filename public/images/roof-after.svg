@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="600" viewBox="0 0 900 600" role="img" aria-label="New residential roof after professional replacement in Katy Texas">
+  <defs>
+    <linearGradient id="sky2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#3b82f6"/>
+      <stop offset="100%" stop-color="#93c5fd"/>
+    </linearGradient>
+  </defs>
+  <rect width="900" height="600" fill="url(#sky2)"/>
+  <rect y="380" width="900" height="220" fill="#6b7280"/>
+  <polygon points="120,380 450,180 780,380" fill="#0A2463"/>
+  <polygon points="200,380 450,240 700,380" fill="#1e3a8a"/>
+  <rect x="380" y="420" width="140" height="100" fill="#fbbf24" opacity="0.9"/>
+  <text x="450" y="520" text-anchor="middle" font-family="Arial,sans-serif" font-size="22" fill="#0A2463">After  new roof installed</text>
+</svg>

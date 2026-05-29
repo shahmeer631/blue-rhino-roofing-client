@@ -1,5 +1,7 @@
-import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
+import SeoHead from '../components/SeoHead';
+import { ABOUT_META } from '../seo/pageMeta';
+import { breadcrumbSchema, localBusinessSchema, webPageSchema } from '../seo/schema';
 
 const values = [
   { icon: '🤝', title: 'Integrity in every inspection', desc: 'Honest assessments every time — no manufactured damage, no inflated reports.' },
@@ -26,11 +28,17 @@ const whyChoose = [
 export default function About() {
   return (
     <>
-      <Helmet>
-        <title>About Blue Rhino Roofing | Houston's Licensed Insurance Adjuster Roofers</title>
-        <meta name="description" content="Blue Rhino Roofing is a Houston-based roofing company founded by licensed Texas insurance adjusters and HAAG Engineering Certified inspectors. We work only for homeowners." />
-        <meta name="keywords" content="about Blue Rhino Roofing, Houston roofer, licensed insurance adjuster, HAAG certified, Katy Texas roofing" />
-      </Helmet>
+      <SeoHead
+        {...ABOUT_META}
+        jsonLd={[
+          localBusinessSchema(),
+          webPageSchema({ path: ABOUT_META.path, name: ABOUT_META.title, description: ABOUT_META.description }),
+          breadcrumbSchema([
+            { name: 'Home', url: '/' },
+            { name: 'About', url: '/about' },
+          ]),
+        ]}
+      />
 
       {/* Hero */}
       <section className="bg-rhino-blue pt-28 pb-16 clip-diagonal">

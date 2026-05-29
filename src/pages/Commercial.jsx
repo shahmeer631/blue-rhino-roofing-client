@@ -1,5 +1,7 @@
-import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
+import SeoHead from '../components/SeoHead';
+import { COMMERCIAL_META } from '../seo/pageMeta';
+import { breadcrumbSchema, localBusinessSchema, webPageSchema } from '../seo/schema';
 import EstimateForm from '../components/EstimateForm';
 
 const systems = [
@@ -16,11 +18,17 @@ const industries = ['Office Buildings', 'Warehouses', 'Retail Stores', 'Restaura
 export default function Commercial() {
   return (
     <>
-      <Helmet>
-        <title>Commercial Roofing Houston & Katy TX | Blue Rhino Roofing</title>
-        <meta name="description" content="Professional commercial roofing in Houston and Katy TX. TPO, modified bitumen, metal, EPDM. Storm damage experts with insurance claim support for businesses. Free estimates." />
-        <meta name="keywords" content="commercial roofing Houston, flat roof Katy TX, TPO roofing Houston, EPDM, business roofing, commercial roof replacement Houston, storm damage commercial" />
-      </Helmet>
+      <SeoHead
+        {...COMMERCIAL_META}
+        jsonLd={[
+          localBusinessSchema(),
+          webPageSchema({ path: COMMERCIAL_META.path, name: COMMERCIAL_META.title, description: COMMERCIAL_META.description }),
+          breadcrumbSchema([
+            { name: 'Home', url: '/' },
+            { name: 'Commercial Roofing', url: '/commercial' },
+          ]),
+        ]}
+      />
 
       {/* Hero */}
       <section className="bg-rhino-blue pt-28 pb-16 clip-diagonal">
@@ -90,6 +98,17 @@ export default function Commercial() {
               <span key={ind} className="bg-white/10 border border-white/20 text-white font-heading font-semibold px-5 py-2.5 rounded-full text-sm hover:bg-rhino-yellow hover:text-rhino-blue transition-colors cursor-default">{ind}</span>
             ))}
           </div>
+        </div>
+      </section>
+
+      <section className="py-8 bg-white border-t border-gray-100">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 text-center font-body text-sm text-gray-600">
+          Homeowners: see{' '}
+          <Link to="/residential" className="text-rhino-blue-mid font-semibold hover:underline">residential roofing</Link>
+          {' '}·{' '}
+          <Link to="/#insurance" className="text-rhino-blue-mid font-semibold hover:underline">insurance claims</Link>
+          {' '}·{' '}
+          <Link to="/contact" className="text-rhino-blue-mid font-semibold hover:underline">contact us</Link>
         </div>
       </section>
 

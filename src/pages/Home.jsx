@@ -1,4 +1,5 @@
-import { Helmet } from 'react-helmet-async';
+import { Link } from 'react-router-dom';
+import SeoHead from '../components/SeoHead';
 import HeroSection from '../components/HeroSection';
 import HomeTrustSection from '../components/HomeTrustSection';
 import ServicesSection from '../components/ServicesSection';
@@ -12,40 +13,37 @@ import AppraisalProcess from '../components/AppraisalProcess';
 import DeductibleInfo from '../components/DeductibleInfo';
 import EmergencyServices from '../components/EmergencyServices';
 import WorkingProcess from '../components/WorkingProcess';
+import HomeFaqSection from '../components/HomeFaqSection';
+import CredentialsGallery from '../components/CredentialsGallery';
+import { HOME_META } from '../seo/pageMeta';
+import { homepageFaqs } from '../seo/faqs';
+import { featuredReviews } from '../seo/reviews';
+import {
+  localBusinessSchema,
+  faqPageSchema,
+  reviewSchema,
+  webPageSchema,
+} from '../seo/schema';
 
 export default function Home() {
+  const jsonLd = [
+    localBusinessSchema(),
+    webPageSchema({
+      path: HOME_META.path,
+      name: HOME_META.title,
+      description: HOME_META.description,
+    }),
+    faqPageSchema(homepageFaqs),
+    ...reviewSchema(featuredReviews),
+  ];
+
   return (
     <>
-      <Helmet>
-        <title>Blue Rhino Roofing | Houston Storm Damage Roofing Experts | Licensed Insurance Adjusters</title>
-        <meta name="description" content="Houston and Katy's trusted storm damage roofing experts. Licensed insurance adjusters working only for homeowners. Free inspections, insurance claim support, 5-year warranty. Call (346) 733-8558." />
-        <meta name="keywords" content="Houston roofing, storm damage repair Houston, insurance claim roofing Houston, Katy roofer, roof replacement Houston, licensed adjuster roofer, HAAG Engineering certified roofer Houston, Blue Rhino Roofing" />
-        <meta property="og:title" content="Blue Rhino Roofing | Houston Storm Damage Roofing Experts" />
-        <meta property="og:description" content="Licensed insurance adjusters working only for homeowners. Free storm inspections. Call (346) 733-8558." />
-        <script type="application/ld+json">{JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "RoofingContractor",
-          "name": "Blue Rhino Roofing",
-          "url": "https://www.bluerhinoroofing.net",
-          "telephone": "+13467338558",
-          "email": "help@BlueRhinoRoofing.net",
-          "address": {
-            "@type": "PostalAddress",
-            "streetAddress": "2717 Commercial Center Blvd Suite E200",
-            "addressLocality": "Katy",
-            "addressRegion": "TX",
-            "postalCode": "77494",
-            "addressCountry": "US"
-          },
-          "areaServed": ["Houston", "Katy", "Sugar Land", "Cypress", "The Woodlands", "Spring", "Humble", "Pearland", "Friendswood", "Missouri City", "Richmond", "Memorial", "River Oaks", "Heights", "Montrose"],
-          "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.8", "reviewCount": "200" },
-          "sameAs": ["https://www.bbb.org/us/tx/katy/profile/roofing-contractors/blue-rhino-roofing-0915-90075546"],
-          "priceRange": "$$"
-        })}</script>
-      </Helmet>
+      <SeoHead {...HOME_META} jsonLd={jsonLd} />
 
       <HeroSection />
       <HomeTrustSection />
+      <CredentialsGallery />
       <MeetTheTeam />
       <OurPromise />
       <ServicesSection />
@@ -54,10 +52,10 @@ export default function Home() {
       <WorkingProcess />
       <AppraisalProcess />
       <DeductibleInfo />
+      <HomeFaqSection />
       <WhyUs />
       <Testimonials />
 
-      {/* Estimate section */}
       <section className="py-24 bg-rhino-gray" id="estimate">
         <div className="max-w-3xl mx-auto px-4 sm:px-6">
           <div className="text-center mb-10">
@@ -71,7 +69,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Service areas */}
       <section className="py-12 bg-rhino-blue">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 text-center">
           <h3 className="font-heading font-bold text-white mb-4 text-lg">Proudly Serving the Greater Houston Area</h3>
@@ -80,6 +77,15 @@ export default function Home() {
               <span key={city} className="bg-white/10 border border-white/20 text-white text-sm font-heading px-4 py-1.5 rounded-full hover:bg-rhino-yellow hover:text-rhino-blue transition-colors cursor-default">{city}</span>
             ))}
           </div>
+          <p className="mt-6 text-gray-300 text-sm font-body">
+            Explore our{' '}
+            <Link to="/residential" className="text-rhino-yellow hover:underline font-semibold">residential roofing</Link>
+            ,{' '}
+            <Link to="/commercial" className="text-rhino-yellow hover:underline font-semibold">commercial roofing</Link>
+            , and{' '}
+            <Link to="/contact" className="text-rhino-yellow hover:underline font-semibold">contact page</Link>
+            {' '}for a free storm damage inspection.
+          </p>
         </div>
       </section>
     </>

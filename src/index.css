@@ -15,6 +15,19 @@
     @apply font-body text-gray-900 bg-white;
     -webkit-font-smoothing: antialiased;
   }
+
+  /* System fallbacks while Google Fonts load (non-blocking link in index.html) */
+  .font-heading {
+    font-family: 'Montserrat', 'Bebas Neue', system-ui, sans-serif;
+  }
+
+  .font-display {
+    font-family: 'Bebas Neue', 'Montserrat', system-ui, sans-serif;
+  }
+
+  .font-body {
+    font-family: 'Inter', system-ui, sans-serif;
+  }
 }
 
 @layer components {

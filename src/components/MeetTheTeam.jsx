@@ -1,4 +1,44 @@
-import teamTruckUrl from '../assets/images/team-truck.svg?url';
+/** Team section graphic — inline SVG so it always renders on Vercel (no external file). */
+function TeamTruckGraphic() {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 800 500"
+      width={800}
+      height={500}
+      className="w-full h-48 sm:h-56"
+      role="img"
+      aria-label="Blue Rhino Roofing service team and truck serving Houston and Katy Texas"
+    >
+      <rect width="800" height="500" fill="#0A2463" />
+      <rect x="80" y="220" width="420" height="140" rx="12" fill="#fbbf24" />
+      <rect x="500" y="260" width="180" height="100" rx="8" fill="#1e3a8a" />
+      <circle cx="200" cy="380" r="40" fill="#111827" />
+      <circle cx="560" cy="380" r="40" fill="#111827" />
+      <text
+        x="400"
+        y="120"
+        textAnchor="middle"
+        fill="#fbbf24"
+        fontFamily="Arial, sans-serif"
+        fontSize="36"
+        fontWeight="bold"
+      >
+        BLUE RHINO ROOFING
+      </text>
+      <text
+        x="400"
+        y="170"
+        textAnchor="middle"
+        fill="#e5e7eb"
+        fontFamily="Arial, sans-serif"
+        fontSize="18"
+      >
+        Licensed adjusters - Houston and Katy TX
+      </text>
+    </svg>
+  );
+}
 
 export default function MeetTheTeam() {
   return (
@@ -29,31 +69,22 @@ export default function MeetTheTeam() {
 
           <div className="flex flex-col gap-4">
             <figure className="rounded-2xl overflow-hidden shadow-xl border border-gray-100">
-              <img
-                src={teamTruckUrl}
-                alt="Blue Rhino Roofing service team and truck serving Houston and Katy Texas"
-                title="Blue Rhino Roofing crew"
-                className="w-full h-48 sm:h-56 object-cover"
-                loading="lazy"
-                decoding="async"
-                width={800}
-                height={500}
-              />
+              <TeamTruckGraphic />
             </figure>
 
             <div className="grid grid-cols-2 gap-4">
-            {[
-              { num: '4+', label: 'Years Storm Inspection Experience', icon: '📋', color: 'bg-rhino-blue text-white' },
-              { num: 'TX', label: 'Licensed Insurance Adjusters on Staff', icon: '⚖️', color: 'bg-rhino-yellow text-rhino-blue' },
-              { num: 'HAAG', label: 'Engineering Certified Inspectors', icon: '🏆', color: 'bg-rhino-yellow text-rhino-blue' },
-              { num: 'By scope', label: 'Residential often 1 day · Commercial a few days–30', icon: '⚡', color: 'bg-rhino-blue text-white' },
-            ].map(({ num, label, icon, color }) => (
-              <div key={label} className={`${color} rounded-2xl p-6 shadow-lg`}>
-                <div className="text-3xl mb-2">{icon}</div>
-                <div className="font-display text-3xl mb-1">{num}</div>
-                <div className="font-body text-sm opacity-80">{label}</div>
-              </div>
-            ))}
+              {[
+                { num: '4+', label: 'Years Storm Inspection Experience', icon: '📋', color: 'bg-rhino-blue text-white' },
+                { num: 'TX', label: 'Licensed Insurance Adjusters on Staff', icon: '⚖️', color: 'bg-rhino-yellow text-rhino-blue' },
+                { num: 'HAAG', label: 'Engineering Certified Inspectors', icon: '🏆', color: 'bg-rhino-yellow text-rhino-blue' },
+                { num: 'By scope', label: 'Residential often 1 day · Commercial a few days–30', icon: '⚡', color: 'bg-rhino-blue text-white' },
+              ].map(({ num, label, icon, color }) => (
+                <div key={label} className={`${color} rounded-2xl p-6 shadow-lg`}>
+                  <div className="text-3xl mb-2">{icon}</div>
+                  <div className="font-display text-3xl mb-1">{num}</div>
+                  <div className="font-body text-sm opacity-80">{label}</div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
